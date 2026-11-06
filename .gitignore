@@ -1,0 +1,28 @@
+__pycache__
+*.pyc
+figures
+*outputs*
+data
+wandb
+checkpoints
+*.slurm
+*.sh
+# env/wall/data is a source package (WallDatasetConfig, layouts), not a dataset dir
+!env/wall/data/
+!env/wall/data/*.py
+
+# models, datasets and run outputs: downloaded, trained or produced locally (only logs/ is released)
+eval_outputs/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.pkl
+*.zip
+*.tar
+*.tar.zst
+*.tar.gz

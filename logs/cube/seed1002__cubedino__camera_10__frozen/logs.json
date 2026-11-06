@@ -1,0 +1,1 @@
+{"final_eval/success_rate": 0.58, "final_eval/mean_state_dist": 0.0714633097854659, "n_evals": 50, "method": "frozen", "condition": "camera_10", "seed": 1002, "adapted_params": 0, "wall_s": 1591.5955832004547}

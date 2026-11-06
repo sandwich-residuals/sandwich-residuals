@@ -1,0 +1,70 @@
+ckpt_base_path: /path/to/sandwich_residuals/checkpoints/mediummaze_dynamics_shift
+model_name: mediummaze_dynamics_shift
+model_epoch: latest
+seed: 1004
+n_evals: 50
+goal_source: hard
+eval_data_path: /path/to/sandwich_residuals/data/point_maze_medium
+eval_use_frame_files: false
+env_kwargs_override: null
+goal_H: 50
+n_plot_samples: 10
+decode_for_viz: false
+num_start_frames: 1
+debug_dset_init: false
+objective:
+  _target_: planning.objectives.create_objective_fn
+  alpha: 0
+  base: 2
+  mode: all
+planner:
+  _target_: planning.adajepa_mpc.AdaJEPAMPCPlanner
+  max_iter: 20
+  n_taken_actions: 5
+  adapt:
+    mode: layer
+    continual: false
+    lr: 0.0
+    steps: 0
+    optimizer: adam
+    finetune_every: 1
+    replay_buffer: false
+    finetune_encoder: false
+    encoder_lr: 0.0
+    last_layer_only: true
+    predictor_block: last
+    encoder_last_layer_only: true
+    streams:
+    - action
+    visual: none
+    output: none
+    output_proprio: mlp
+    agent_hidden: 0
+    visual_hidden: 64
+    output_hidden: 64
+    init_scale: 0.0
+    step_norm: null
+    linear_lr: null
+    mlp_lr: null
+    rms_cap: null
+    gate_candidates: null
+    gate_passes: 1
+    learnable_alpha: false
+    alpha_lr: 0.03
+    alpha_steps: 1
+    loss_weighting: feature
+    use_proprio: true
+    train_mode: false
+  reuse_actions: true
+  sub_planner:
+    target: planning.cem.CEMPlanner
+    horizon: 25
+    topk: 30
+    num_samples: 200
+    var_scale: 1
+    opt_steps: 10
+    eval_every: -1
+  name: adajepa_plan_cem_maze
+wandb_logging: false
+ood_corruption: blur
+ood_level: 2

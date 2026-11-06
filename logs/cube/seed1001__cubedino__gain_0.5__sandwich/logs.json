@@ -1,0 +1,1 @@
+{"final_eval/success_rate": 0.62, "final_eval/mean_state_dist": 0.07678190697291015, "n_evals": 50, "method": "ours", "condition": "gain_0.5", "seed": 1001, "adapted_params": 99310, "wall_s": 1632.880915403366}
